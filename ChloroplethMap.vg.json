@@ -73,7 +73,9 @@
         }
     ],
     "mark": {
-        "type": "geoshape"
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke":"white"
     },
     "encoding": {
         "tooltip":{
