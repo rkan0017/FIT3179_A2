@@ -1,3 +1,38 @@
+"data": {
+        "url": "World_View_NoGraticules.json",
+        "format":{"type": "topojson","feature": "ne_110m_admin_0_countries"}
+    },
+
+    "transform": [
+        {
+            "lookup": "properties.NAME",
+            "from":{
+                "data":{
+                    "url": "World Energy Consumption - Cleaned - V2.csv"
+                },
+                "key": "Country",
+                "fields": ["Population"]
+            }
+        }
+    ],
+    "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke":"white"
+    },
+    "encoding": {
+        "tooltip":{
+            "field": "properties.NAME","type": "nominal","title":"Country"
+        }
+    },
+
+    
+    ,
+                {"filter":"datum.year == Year_selection"}
+
+
+
+
 
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -9,11 +44,11 @@
     "params": [
         {
             "name": "Year_selection",
-            "value": 2019,
+            "value": 2010,
             "bind": {
                 "input": "range",
-                "min": 1992,
-                "max": 2019,
+                "min": 1991,
+                "max": 2020,
                 "step": 1,
                 "name": "Year:  "
             }
@@ -65,7 +100,7 @@
                 "format":{"type": "topojson","feature": "ne_110m_admin_0_countries"}
             },
             "transform": [{
-                "calculate": "'Data is not available in ' + datum.properties.NAME + ', ' + datum.properties.ISO_A3_EH",
+                "calculate": "'Data is not available in ' + datum.properties.NAME + ', ' + datum.properties.CONTINENT",
                 "as": "note"
             }],
             "mark": {
@@ -88,7 +123,7 @@
             },
             "transform":[
                 {
-                    "lookup":"Iso Code",
+                    "lookup":"Country",
                     "from":{
                         "data": {
                             "url": "World_View_NoGraticules.json",
@@ -97,12 +132,11 @@
                                 "feature": "ne_110m_admin_0_countries"
                             }
                         } ,
-                        "key": "properties.ISO_A3_EH"                       
+                        "key": "properties.NAME"                       
                     },
                     "as": "geo"
                 },
-            
-                {"filter":"datum.Year == Year_selection"}
+                {"filter":"year(datum.year) == Year_selection"}                
             ],
             "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
             "encoding": {
