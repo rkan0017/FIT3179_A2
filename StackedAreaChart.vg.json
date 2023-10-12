@@ -34,7 +34,7 @@
         "x":{
             "field": "Year"
         },
-        "y":{"aggregate":"sum","field":"Electricity Generation","sort": { "field": "Electricity Generation", "order": "descending" },"stack":"center"},
+        "y":{"aggregate":"sum","field":"Electricity Generation","sort": { "field": "Electricity Generation", "order": "descending" }},
         "color":{"field": "Country"},
         "tooltip":[{"field": "Country","title": "Country"},
         {"field": "Electricity Generation","title":"Electricity generated (TWh)"},

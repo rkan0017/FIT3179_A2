@@ -1,0 +1,50 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    "data":{
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V3.csv",
+        "format":{
+            "type": "csv",
+            "parse": {
+                "Population": "number",
+                "Year": "number"
+            }
+        }
+    },
+    "params": [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        }],
+
+    "title": { "text": "Most energy produced per capita" },     
+    "width": 1800,
+    "height": 800,
+    "mark": "bar",
+    "transform": [{"filter": "datum.Year == Year_selection"},{
+        "window": [{
+          "op": "rank",
+          "as": "rank"
+        }],
+        "sort": [{ "field": "Total Energy per capita", "order": "descending" }]
+      }, {
+        "filter": "datum.rank <= 25"
+      }],
+    "encoding": {
+        "x": { "field": "Country", "type": "nominal", "title":"Country","sort": "-y"},
+        "y": { "field": "Total Energy per capita", "type": "quantitative", "title": null},
+        "color":{"field": "Country"},
+        "tooltip":[
+            {"field": "Total Energy per capita", "title": "Total energy produced per capita"}]
+    
+    }
+
+}

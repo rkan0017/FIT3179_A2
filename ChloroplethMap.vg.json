@@ -52,16 +52,10 @@
                 "labels": ["World", "Africa", "Asia", "Oceania", "Europe","North America", "South America"],
                 "name": "Map Centre: "
             }
-        },
-        {"name": "highlight", "select": {"type": "point", "on": "mouseover"}},
-        {"name": "select", "select": "point"}
+        }
+            
     ],
 
-    
-    "vconcat": [
-        {
-            
-    
     "title": "% renewable electricity per country",
     "width": 1800,
     "height": 800,
@@ -109,7 +103,7 @@
             
                 {"filter":"datum.Year == Year_selection"},
                 {
-                    "calculate": "datum['% Renewables']",
+                    "calculate": "datum['% Renewables'] + '%'",
                     "as": "note"
                 }
             ],
@@ -130,37 +124,12 @@
                     },
                     "tooltip":[
                         {"field": "Country", "title": "Country"},
-                        {"field": "note","title": "% Renewable"}],
-                        "fillOpacity":{"condition":{"param": "select","value":1},"value":0.3}
+                        {"field": "note","title": "% Renewable"}]
                 }
         }
     ]
-        },
-        {
-            "title": { "text": "Most energy produced per capita" },     
-            "width": 1800,
-            "height": 800,
-            "mark": "bar",
-            "transform": [{"filter": "datum.Year == Year_selection"},{
-                "window": [{
-                  "op": "rank",
-                  "as": "rank"
-                }],
-                "sort": [{ "field": "Total Energy per capita", "order": "descending" }]
-              }, {
-                "filter": "datum.rank <= 25"
-              }],
-            "encoding": {
-                "x": { "field": "Country", "type": "nominal", "title":"Country","sort": "-y"},
-                "y": { "field": "Total Energy per capita", "type": "quantitative", "title": null},
-                "color":{"field": "Country"},
-                "tooltip":[
-                    {"field": "Total Energy per capita", "title": "Total energy produced per capita"}]
-            
-            }
 
-        }
-    ]
+
 }
 
 
