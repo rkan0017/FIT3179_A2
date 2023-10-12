@@ -3,7 +3,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "data":{
-        "url": "WorldEnergyConsumption-Cleaned-V3.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V3.csv",
         "format":{
             "type": "csv",
             "parse": {
@@ -75,7 +75,7 @@
     
     "layer":[{
             "data": {
-                "url": "World_View_NoGraticules.json",
+                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/World_View_NoGraticules.json",
                 "format":{"type": "topojson","feature": "ne_110m_admin_0_countries"}
             },
             "transform": [{
@@ -96,7 +96,7 @@
                     "lookup":"Iso Code",
                     "from":{
                         "data": {
-                            "url": "World_View_NoGraticules.json",
+                            "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/World_View_NoGraticules.json",
                             "format":{
                                 "type": "topojson",
                                 "feature": "ne_110m_admin_0_countries"
