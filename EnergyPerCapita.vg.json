@@ -39,8 +39,8 @@
         "filter": "datum.rank <= 25"
       }],
     "encoding": {
-        "x": { "field": "Country", "type": "nominal", "title":"Country","sort": "-y"},
-        "y": { "field": "Total Energy per capita", "type": "quantitative", "title": null},
+        "y": { "field": "Country", "type": "nominal", "title":"Country","sort": "-x"},
+        "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null},
         "color":{"field": "Country"},
         "tooltip":[
             {"field": "Total Energy per capita", "title": "Total energy produced per capita"}]
