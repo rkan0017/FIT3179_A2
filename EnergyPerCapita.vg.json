@@ -3,13 +3,13 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V4.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V5.csv",
         "format":{
             "type": "csv",
             "parse": {
                 "Population": "number",
                 "Year": "number",
-                "Total Energy per capita": "number"
+                "TotalEnergyperCapita(MWh)": "number"
             }
         }
     },
@@ -26,7 +26,7 @@
             }
         }],
 
-    "title": { "text": "Most energy produced per capita" },     
+    "title": { "text": "Most energy produced per capita (MWh)" },     
     "width": 1600,
     "height": 600,
 
@@ -48,7 +48,7 @@
                     "sort": 
                     [
                         {
-                            "field": "Total Energy per capita", "order": "descending" 
+                            "field": "TotalEnergyperCapita(MWh)", "order": "descending" 
                         }
                     ]
                 }, 
@@ -59,11 +59,11 @@
             "encoding": 
             {
                 "y": { "field": "Country", "type": "nominal", "title":"Country","sort": "-x"},
-                "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null,"scale":{"domain": [0, 60000]}},
-                "color":{"field": "Country","legend":null,"sort":{"field": "Total Energy per capita", "order": "descending"}},
+                "x": { "field": "TotalEnergyperCapita(MWh)", "type": "quantitative", "title": null,"scale":{"domain": [0, 60]}},
+                "color":{"field": "Country","legend":null,"sort":{"field": "TotalEnergyperCapita(MWh)", "order": "descending"}},
                 "tooltip":
                 [
-                    {"field": "Total Energy per capita", "title": "Total energy produced per capita"}
+                    {"field": "TotalEnergyperCapita(MWh)", "title": "Total energy produced per capita (MWh)"}
                 ]
 
             }

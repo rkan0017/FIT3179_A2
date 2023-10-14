@@ -1,0 +1,164 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    "data":{
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V5.csv",
+        "format":{
+            "type": "csv",
+            "parse": {
+                "Population": "number",
+                "Year": "number",
+                "TotalEnergyperCapita(MWh)": "number",
+                "Biofuel_pct": "number", 
+                "Coal_pct": "number",
+                "Gas_pct": "number",
+                "Hydro_pct": "number",
+                "Nuclear_pct": "number",
+                "Oil_pct": "number",
+                "Solar_pct": "number",
+                "Wind_pct": "number"
+            }
+        }
+    },
+    "width": 600,
+    "height": 300,
+    "transform": 
+    [
+        {"filter": "datum.Year > 1991"},
+        {"window": [{"op":"count", "as": "year"}]},
+        {"fold": ["Coal_pct","Gas_pct","Oil_pct", "Biofuel_pct","Hydro_pct","Nuclear_pct","Solar_pct","Wind_pct"]},
+        {
+            "joinaggregate": [
+                {"op": "min","field": "value","as": "min"},
+                {"op": "max","field": "value","as": "max"}
+            ],
+            "groupby": ["key"]
+        },
+        {
+            "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+            "as": "norm_val"
+        },
+        {
+            "calculate": "(datum.min + datum.max) / 2",
+            "as": "mid"
+        },
+        {"filter":"datum.Year == Year_selection"},
+        {"filter":"datum.Country == country_select"}
+    ],
+    "params": 
+    [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        },
+        {
+            "name": "country_select",
+            "value": "Australia"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {"type": "rule","color":"#ccc"},
+            "encoding": 
+            {
+                "detail": {"aggregate": "count"},
+                "x": {"field": "key"}
+            }
+        },
+        {
+            "mark":{"type": "line", "strokeWidth": 3},
+            "encoding": {
+                "detail":{"type": "nominal","field":"index"},
+                "opacity": {"value": 0.9},
+                "x":{"type": "nominal","field":"key"},
+                "y":{"type": "quantitative","field":"norm_val","axis":null}
+            }
+        },
+        {"encoding": 
+        {
+            "x": {"type":"nominal","field":"key"},
+            "y": {"value": 0}
+        },
+        "layer": [{
+            "mark": {"type": "text", "style": "label"},
+            "encoding": {
+            "text": {"aggregate": "max", "field": "max"}
+            }
+        }, {
+            "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+        }]
+        }, {
+            "encoding": {
+                "x": {"type": "nominal", "field": "key"},
+                "y": {"value": 150}
+            },
+            "layer": [{
+                "mark": {"type": "text", "style": "label"},
+                "encoding": {
+                "text": {"aggregate": "min", "field": "mid"}
+                }
+            }, {
+                "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+            }]
+            }, {
+            "encoding": {
+                "x": {"type": "nominal", "field": "key"},
+                "y": {"value": 300}
+            },
+            "layer": [{
+                "mark": {"type": "text", "style": "label"},
+                "encoding": {
+                "text": {"aggregate": "min", "field": "min"}
+                }
+            }, {
+                "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+            }]
+            },{
+                "mark":{"type": "point", "size":200},
+                "encoding": {
+                    "x":{"type": "nominal", "field": "key"},
+                    "y":{"type": "quantitative","field":"norm_val","axis":null},
+                    "tooltip": [{
+                        "type": "quantitative",
+                        "field": "Beak Length (mm)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Beak Depth (mm)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Flipper Length (mm)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Body Mass (g)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Body Mass (g)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Body Mass (g)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Body Mass (g)"
+                      }, {
+                        "type": "quantitative",
+                        "field": "Body Mass (g)"
+                      }]
+                }
+            }
+    ],
+    "config": {
+    "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
+    "view": {"stroke": null},
+    "style": {
+        "label": {"baseline": "middle", "align": "right", "dx": -5},
+        "tick": {"orient": "horizontal"}
+    }
+    }
+}
