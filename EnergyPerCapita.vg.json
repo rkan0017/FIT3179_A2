@@ -3,12 +3,13 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V3.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V4.csv",
         "format":{
             "type": "csv",
             "parse": {
                 "Population": "number",
-                "Year": "number"
+                "Year": "number",
+                "Total Energy per capita": "number"
             }
         }
     },
@@ -30,7 +31,8 @@
     "height": 600,
     "mark": "bar",
     "transform": 
-    [{"filter": "datum.Year == Year_selection"},
+    [
+        {"filter": "datum.Year == Year_selection"},
         {
             "window": 
             [
@@ -53,8 +55,8 @@
     "encoding": 
     {
         "y": { "field": "Country", "type": "nominal", "title":"Country","sort": "-x"},
-        "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null,"scale":{"domain": [0, 10000]}},
-        "color":{"field": "Country"},
+        "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null,"scale":{"domain": [0, 60000]}},
+        "color":{"field": "Country","legend":null,"sort":{"field": "Total Energy per capita", "order": "descending"}},
         "tooltip":
         [
             {"field": "Total Energy per capita", "title": "Total energy produced per capita"}

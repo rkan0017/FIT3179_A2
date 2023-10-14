@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    
+
     "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V3.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V4.csv",
         "format":{
             "type": "csv",
             "parse": {
@@ -11,39 +11,93 @@
             }
         }
     },
-    "width": 1800,
-    "height": 800,
-    "mark": "area",
-    "params": [{
-        "name": "country",
-        "select": {"type": "point", "fields": ["Country"]},
-        "bind": "legend"
-        }
-    ],
-    "transform": [
-        {"filter": "datum.Year > 1990"},
-        {"filter": "datum.Year < 2020"},
+    "vconcat": [
         {
-            "window": [{
-                "op": "rank",
-                "as": "rank"
-            }],
-            "sort": [{ "field": "Electricity Generation", "order": "descending" }]
-        }
-    ],
-    "encoding": {
-        "x":{
-            "field": "Year"
+            "width": 1600,
+            "height": 800,
+            "mark": "area",
+            
+            "params": [{
+                "name": "country",
+                "select": {"type": "point", "fields": ["Country"]},
+                "bind": "legend"
+                }
+            ],
+            "transform": [
+                {"filter": "datum.Year > 1990"},
+                {"filter": "datum.Year < 2020"},
+                {
+                    "window": [{
+                        "op": "rank",
+                        "as": "rank"
+                    }],
+                    "sort": [{ "field": "Electricity Generation", "order": "descending" }]
+                }
+            ],
+            "encoding": {
+                "x":{
+                    "field": "Year"
+                },
+                "y":{"aggregate":"sum","field":"Electricity Generation","title":"Electricity Produced (TWh)"},
+                "color":
+                {
+                    "field": "Country","legend":{"title":"Country (sorted by most energy produced)"},"scale":{"scheme": "category20c"},
+                    "sort": { "field": "Electricity Generation", "order": "descending" }
+                },
+                "tooltip":[{"field": "Country","title": "Country"},
+                {"field": "Electricity Generation","title":"Electricity generated (TWh)"},
+                {"field": "Year","title": "Year"}
+
+            ],
+            "opacity": {
+                "condition": {"param": "country", "value": 1},
+                "value": 0.2
+                }
+            }
         },
-        "y":{"aggregate":"sum","field":"Electricity Generation","sort": { "field": "Electricity Generation", "order": "descending" }},
-        "color":{"field": "Country"},
-        "tooltip":[{"field": "Country","title": "Country"},
-        {"field": "Electricity Generation","title":"Electricity generated (TWh)"},
-        {"field": "Year","title": "Year"}
-    ],
-    "opacity": {
-        "condition": {"param": "country", "value": 1},
-        "value": 0.2
+
+        {
+            "width": 1600,
+            "height": 100,
+            "mark": "area",
+            
+            "params": [
+                {
+                    "name": "brush",
+                    "select": {"type": "interval", "encodings": ["x"]}
+                }
+            ],
+            "transform": [
+                {"filter": "datum.Year > 1990"},
+                {"filter": "datum.Year < 2020"},
+                {
+                    "window": [{
+                        "op": "rank",
+                        "as": "rank"
+                    }],
+                    "sort": [{ "field": "Electricity Generation", "order": "descending" }]
+                }
+            ],
+            "encoding": {
+                "x":{
+                    "field": "Year"
+                },
+                "y":{"aggregate":"sum","field":"Electricity Generation","title":"Electricity Produced (TWh)"},
+                "color":
+                {
+                    "field": "Country","legend":{"title":"Country (sorted by most energy produced)"},"scale":{"scheme": "category20c"},
+                    "sort": { "field": "Electricity Generation", "order": "descending" }
+                },
+                "tooltip":[{"field": "Country","title": "Country"},
+                {"field": "Electricity Generation","title":"Electricity generated (TWh)"},
+                {"field": "Year","title": "Year"}
+
+            ],
+            "opacity": {
+                "condition": {"param": "country", "value": 1},
+                "value": 0.2
+                }
+            }
         }
-    }
+    ]
 }
