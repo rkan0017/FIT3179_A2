@@ -18,17 +18,18 @@
         "name": "country",
         "select": {"type": "point", "fields": ["Country"]},
         "bind": "legend"
-      }],
+        }
+    ],
     "transform": [
         {"filter": "datum.Year > 1990"},
         {"filter": "datum.Year < 2020"},
         {
             "window": [{
-              "op": "rank",
-              "as": "rank"
+                "op": "rank",
+                "as": "rank"
             }],
             "sort": [{ "field": "Electricity Generation", "order": "descending" }]
-          }
+        }
     ],
     "encoding": {
         "x":{
@@ -43,6 +44,6 @@
     "opacity": {
         "condition": {"param": "country", "value": 1},
         "value": 0.2
-      }
+        }
     }
 }

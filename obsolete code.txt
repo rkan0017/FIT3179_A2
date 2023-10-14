@@ -210,3 +210,32 @@
                 },
                 {
                     "filter": "Continent_selection == null || datum.Continent == Continent_selection"}
+
+
+
+        ,
+            "value": 250,
+            "bind": {
+                "input": "range",
+                "min": 250,
+                "max": 1200,
+                "step": 25,
+                "name": "Zoom: "
+            }
+
+            ,
+            "value": [-100,45],
+            "bind": {
+                "input": "select",
+                "options": [
+                    [0,0],
+                    [15,0],
+                    [70,35],
+                    [10,52],
+                    [130,-25],
+                    [-110,45],
+                    [-80,-23]
+                ],
+                "labels": ["World", "Africa", "Asia", "Europe", "Oceania","North America", "South America"],
+                "name": "Map Centre: "
+            }
