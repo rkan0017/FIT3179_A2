@@ -2,21 +2,21 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V6.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
         "format":{
             "type": "csv",
             "parse": {
                 "Population": "number",
                 "Year": "number",
                 "TotalEnergyperCapita(MWh)": "number",
-                "Biofuel_pct": "number",
-                "Coal_pct": "number",
-                "Gas_pct": "number",
-                "Hydro_pct": "number",
-                "Nuclear_pct": "number",
-                "Oil_pct": "number",
-                "Solar_pct": "number",
-                "Wind_pct": "number"
+                "Biofuel": "number",
+                "Coal": "number",
+                "Gas": "number",
+                "Hydro": "number",
+                "Nuclear": "number",
+                "Oil": "number",
+                "Solar": "number",
+                "Wind": "number"
             }
         }
     },
@@ -26,7 +26,7 @@
     [
         {"filter": "datum.Year > 1991"},
         {"window": [{"op":"count", "as": "year"}]},
-        {"fold": ["Coal_pct","Gas_pct","Oil_pct", "Biofuel_pct","Hydro_pct","Nuclear_pct","Solar_pct","Wind_pct"]},
+        {"fold": ["Coal","Gas","Oil", "Biofuel","Hydro","Nuclear","Solar","Wind"]},
         {
             "joinaggregate": [
                 {"op": "min","field": "value","as": "min"},
@@ -131,28 +131,36 @@
                     "y":{"type": "quantitative","field":"norm_val","axis":null},
                     "tooltip": [{
                         "type": "quantitative",
-                        "field": "Biofuel_pct"
+                        "field": "Biofuel",
+                        "title": "Biofuel %"
                       }, {
                         "type": "quantitative",
-                        "field": "Coal_pct"
+                        "field": "Coal",
+                        "title": "Coal %"
                       }, {
                         "type": "quantitative",
-                        "field": "Gas_pct"
+                        "field": "Gas",
+                        "title": "Gas %"
                       }, {
                         "type": "quantitative",
-                        "field": "Hydro_pct"
+                        "field": "Hydro",
+                        "title": "Hydro %"
                       }, {
                         "type": "quantitative",
-                        "field": "Nuclear_pct"
+                        "field": "Nuclear",
+                        "title": "Nuclear %"
                       }, {
                         "type": "quantitative",
-                        "field": "Oil_pct"
+                        "field": "Oil",
+                        "title": "Oil %"
                       }, {
                         "type": "quantitative",
-                        "field": "Solar_pct"
+                        "field": "Solar",
+                        "title": "Solar %"
                       }, {
                         "type": "quantitative",
-                        "field": "Wind_pct"
+                        "field": "Wind",
+                        "title": "Wind %"
                       }]
                 }
             }
