@@ -2,14 +2,14 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V5.csv",
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V6.csv",
         "format":{
             "type": "csv",
             "parse": {
                 "Population": "number",
                 "Year": "number",
                 "TotalEnergyperCapita(MWh)": "number",
-                "Biofuel_pct": "number", 
+                "Biofuel_pct": "number",
                 "Coal_pct": "number",
                 "Gas_pct": "number",
                 "Hydro_pct": "number",
@@ -34,6 +34,10 @@
             ],
             "groupby": ["key"]
         },
+        {
+            "calculate": "100", "as": "max"
+        },
+        {"calculate": "0", "as": "min"},
         {
             "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
             "as": "norm_val"
@@ -77,13 +81,13 @@
             "encoding": {
                 "detail":{"type": "nominal","field":"index"},
                 "opacity": {"value": 0.9},
-                "x":{"type": "nominal","field":"key"},
+                "x":{"type": "nominal","field":"key","title":"Electricity Source"},
                 "y":{"type": "quantitative","field":"norm_val","axis":null}
             }
         },
         {"encoding": 
         {
-            "x": {"type":"nominal","field":"key"},
+            "x": {"type":"nominal","field":"key","axis": {"offset": 5}},
             "y": {"value": 0}
         },
         "layer": [{
@@ -127,28 +131,28 @@
                     "y":{"type": "quantitative","field":"norm_val","axis":null},
                     "tooltip": [{
                         "type": "quantitative",
-                        "field": "Beak Length (mm)"
+                        "field": "Biofuel_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Beak Depth (mm)"
+                        "field": "Coal_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Flipper Length (mm)"
+                        "field": "Gas_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Body Mass (g)"
+                        "field": "Hydro_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Body Mass (g)"
+                        "field": "Nuclear_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Body Mass (g)"
+                        "field": "Oil_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Body Mass (g)"
+                        "field": "Solar_pct"
                       }, {
                         "type": "quantitative",
-                        "field": "Body Mass (g)"
+                        "field": "Wind_pct"
                       }]
                 }
             }
