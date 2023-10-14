@@ -40,7 +40,7 @@
         "y":{"aggregate":"sum","field":"Electricity Generation","title":"Electricity Produced (TWh)"},
         "color":
         {
-            "field": "Country","legend":{"title":"Country (sorted by most energy produced)"},"scale":{"scheme": "category20c"},
+            "field": "Country","legend":{"title":"Country"},"scale":{"scheme": "category20c"},
             "sort": { "field": "Electricity Generation", "order": "descending" }
         },
         "tooltip":[{"field": "Country","title": "Country"},

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "data":{
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V4.csv",
+        "format":{
+            "type": "csv",
+            "parse": {
+                "Population": "number",
+                "Year": "number"
+            }
+        }
+    },
+    "mark":""
+}

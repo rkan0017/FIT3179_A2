@@ -29,39 +29,45 @@
     "title": { "text": "Most energy produced per capita" },     
     "width": 1600,
     "height": 600,
-    "mark": "bar",
-    "transform": 
-    [
-        {"filter": "datum.Year == Year_selection"},
+
+    "layer": [
         {
-            "window": 
+            
+            "mark": "bar",
+            "transform": 
             [
+                {"filter": "datum.Year == Year_selection"},
                 {
-                    "op": "rank",
-                    "as": "rank"
+                    "window": 
+                    [
+                        {
+                            "op": "rank",
+                            "as": "rank"
+                        }
+                    ],
+                    "sort": 
+                    [
+                        {
+                            "field": "Total Energy per capita", "order": "descending" 
+                        }
+                    ]
+                }, 
+                {
+                    "filter": "datum.rank <= 25"
                 }
             ],
-            "sort": 
-            [
-                {
-                    "field": "Total Energy per capita", "order": "descending" 
-                }
-            ]
-        }, 
-        {
-            "filter": "datum.rank <= 25"
+            "encoding": 
+            {
+                "y": { "field": "Country", "type": "nominal", "title":"Country","sort": "-x"},
+                "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null,"scale":{"domain": [0, 60000]}},
+                "color":{"field": "Country","legend":null,"sort":{"field": "Total Energy per capita", "order": "descending"}},
+                "tooltip":
+                [
+                    {"field": "Total Energy per capita", "title": "Total energy produced per capita"}
+                ]
+
+            }
         }
-    ],
-    "encoding": 
-    {
-        "y": { "field": "Country", "type": "nominal", "title":"Country","sort": "-x"},
-        "x": { "field": "Total Energy per capita", "type": "quantitative", "title": null,"scale":{"domain": [0, 60000]}},
-        "color":{"field": "Country","legend":null,"sort":{"field": "Total Energy per capita", "order": "descending"}},
-        "tooltip":
-        [
-            {"field": "Total Energy per capita", "title": "Total energy produced per capita"}
-        ]
-    
-    }
+    ]
 
 }
