@@ -34,10 +34,11 @@
         }
     ],
     "encoding": {
-        "x":{
-            "field": "Year"
+        "x":{ 
+            "field": "Year",
+            "axis":{"tickSize": 1}
         },
-        "y":{"aggregate":"sum","field":"Electricity Generation","title":"Electricity Produced (TWh)"},
+        "y":{"aggregate":"sum","field":"Electricity Generation","axis": null,"title":null, "stack":"center"},
         "color":
         {
             "field": "Country","legend":{"title":"Country"},"scale":{"scheme": "category20c"},
