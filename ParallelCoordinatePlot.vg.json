@@ -1,28 +1,52 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
-    "data":{
-        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
-        "format":{
-            "type": "csv",
-            "parse": {
-                "Population": "number",
-                "Year": "number",
-                "TotalEnergyperCapita(MWh)": "number",
-                "Biofuel": "number",
-                "Coal": "number",
-                "Gas": "number",
-                "Hydro": "number",
-                "Nuclear": "number",
-                "Oil": "number",
-                "Solar": "number",
-                "Wind": "number"
-            }
-        }
-    },
+    
     "width": 600,
     "height": 300,
-    "transform": 
+    
+    
+    "params": 
+    [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        },
+        {
+            "name": "country_select",
+            "value": "Australia"
+        }
+    ],
+    "layer": [
+        {   
+            "data":{
+                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
+                "format":{
+                    "type": "csv",
+                    "parse": {
+                        "Population": "number",
+                        "Year": "number",
+                        "TotalEnergyperCapita(MWh)": "number",
+                        "Biofuel": "number",
+                        "Coal": "number",
+                        "Gas": "number",
+                        "Hydro": "number",
+                        "Nuclear": "number",
+                        "Oil": "number",
+                        "Solar": "number",
+                        "Wind": "number"
+                    }
+                }
+            },
+
+            "transform": 
     [
         {"filter": "datum.Year > 1991"},
         {"window": [{"op":"count", "as": "year"}]},
@@ -49,26 +73,8 @@
         {"filter":"datum.Year == Year_selection"},
         {"filter":"datum.Country == country_select"}
     ],
-    "params": 
-    [
-        {
-            "name": "Year_selection",
-            "value": 2019,
-            "bind": {
-                "input": "range",
-                "min": 1992,
-                "max": 2019,
-                "step": 1,
-                "name": "Year:  "
-            }
-        },
-        {
-            "name": "country_select",
-            "value": "Australia"
-        }
-    ],
-    "layer": [
-        {
+            
+            "layer": [{
             "mark": {"type": "rule","color":"#ccc"},
             "encoding": 
             {
@@ -163,6 +169,142 @@
                         "title": "Wind %"
                       }]
                 }
+            }]},
+            {
+                "data":{
+                    "name": "b",
+                    "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/worldData_pct.csv",
+                    "format":{
+                        "type": "csv",
+                        "parse": {
+                            "Population": "number",
+                            "Year": "number",
+                            "Biofuel": "number",
+                            "Coal": "number",
+                            "Gas": "number",
+                            "Hydro": "number",
+                            "Nuclear": "number",
+                            "Oil": "number",
+                            "Solar": "number",
+                            "Wind": "number"
+                        }
+                    }
+                },
+                "transform": 
+    [
+        {"filter": "datum.Year > 1991"},
+        {"window": [{"op":"count", "as": "year"}]},
+        {"fold": ["Coal","Gas","Oil", "Biofuel","Hydro","Nuclear","Solar","Wind"]},
+        {
+            "calculate": "100", "as": "max"
+        },
+        {"calculate": "0", "as": "min"},
+        {
+            "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+            "as": "norm_val"
+        },
+        {
+            "calculate": "(datum.min + datum.max) / 2",
+            "as": "mid"
+        },
+        {"filter":"datum.Year == Year_selection"}
+    ],
+                "layer": [{
+                    "mark": {"type": "rule","color":"#ccc"},
+                    "encoding": 
+                    {
+                        "detail": {"aggregate": "count"},
+                        "x": {"field": "key"}
+                    }
+                },
+                {
+                    "mark":{"type": "line", "strokeWidth": 7},
+                    "encoding": {
+                        "detail":{"type": "nominal","field":"index"},
+                        "opacity": {"value": 0.9},
+                        "x":{"type": "nominal","field":"key","title":"Electricity Source"},
+                        "y":{"type": "quantitative","field":"norm_val","axis":null}
+                    }
+                },
+                {"encoding": 
+                {
+                    "x": {"type":"nominal","field":"key","axis": {"offset": 5}},
+                    "y": {"value": 0}
+                },
+                "layer": [{
+                    "mark": {"type": "text", "style": "label"},
+                    "encoding": {
+                    "text": {"aggregate": "max", "field": "max"}
+                    }
+                }, {
+                    "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+                }]
+                }, {
+                    "encoding": {
+                        "x": {"type": "nominal", "field": "key"},
+                        "y": {"value": 150}
+                    },
+                    "layer": [{
+                        "mark": {"type": "text", "style": "label"},
+                        "encoding": {
+                        "text": {"aggregate": "min", "field": "mid"}
+                        }
+                    }, {
+                        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+                    }]
+                    }, {
+                    "encoding": {
+                        "x": {"type": "nominal", "field": "key"},
+                        "y": {"value": 300}
+                    },
+                    "layer": [{
+                        "mark": {"type": "text", "style": "label"},
+                        "encoding": {
+                        "text": {"aggregate": "min", "field": "min"}
+                        }
+                    }, {
+                        "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+                    }]
+                    },{
+                        "mark":{"type": "point", "size":200},
+                        "encoding": {
+                            "x":{"type": "nominal", "field": "key"},
+                            "y":{"type": "quantitative","field":"norm_val","axis":null},
+                            "tooltip": [{
+                                "type": "quantitative",
+                                "field": "Biofuel",
+                                "title": "Biofuel %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Coal",
+                                "title": "Coal %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Gas",
+                                "title": "Gas %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Hydro",
+                                "title": "Hydro %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Nuclear",
+                                "title": "Nuclear %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Oil",
+                                "title": "Oil %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Solar",
+                                "title": "Solar %"
+                              }, {
+                                "type": "quantitative",
+                                "field": "Wind",
+                                "title": "Wind %"
+                              }]
+                        }
+                    }]
             }
     ],
     "config": {
