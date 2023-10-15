@@ -190,8 +190,8 @@
         {"filter": "datum.Year > 1991"},
         {"window": [{"op":"count", "as": "year"}]},
         {"fold": ["Coal","Gas","Oil", "Biofuel","Hydro","Nuclear","Solar","Wind"]},
-        {"filter":"datum.Year == Year_selection"},
-        {"filter":"datum.Country == country_select"}
+        {"filter":"datum.Year == Year_selection | ''"},
+        {"filter":"datum.Country == country_select | ''"}
     ],
             
             "layer": [{

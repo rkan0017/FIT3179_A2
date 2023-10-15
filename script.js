@@ -93,12 +93,12 @@ function changeBothView(){
 function changeView(){
     view = chart.view
     selected = document.getElementById("country-choice")
+    var yearSelect = document.getElementById("yearSelect");
     value = selected.value
     console.log(value)
-    if (value != ""){
-        view.signal("country_select",value)
-        view.signal("Year_selection",2019)
-    }
+    view.signal("country_select",value)
+    view.signal("Year_selection",yearSelect)
+    
 }
 
 function highlight(){

@@ -124,9 +124,9 @@
                     "as": "geo"
                 },
                 {
-                "filter": "datum.Country == country_select"},
+                "filter": "datum.Country == country_select | ''"},
             
-                {"filter":"datum.Year == Year_selection"},
+                {"filter":"datum.Year == Year_selection | ''"},
                 {
                     "calculate": "datum['Electricity Generation'] + ' TWh' ",
                     "as": "note"
