@@ -1,0 +1,127 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    "params": [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        },
+        {
+            "name": "zoom_level",
+            "value": 250
+        },
+        {
+            "name": "center_to"
+        }
+            
+    ],
+    
+
+    "vconcat": [{
+
+
+        "title": "% renewable electricity per country",
+    "width": 1200,
+    "height": 800,
+    
+    
+    "projection": {
+        "type":"equirectangular",
+        "center":{"expr": "center_to"},
+        "scale":{"expr": "zoom_level"},
+        "rotate":[-10,0]
+    },
+    "data":{
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
+        "format":{
+            "type": "csv",
+            "parse": {
+                "Population": "number",
+                "Year": "number",
+                "Electricity Generation": "number"
+            }
+        }
+    },
+    
+    "layer":[{
+            "data": {
+                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/World_View_NoGraticules.json",
+                "format":{"type": "topojson","feature": "ne_110m_admin_0_countries"}
+            },
+            "transform": [{
+                "calculate": "'Data is not available in ' + datum.properties.NAME + ', ' + datum.properties.ISO_A3_EH",
+                "as": "note"
+            }],
+            "mark": {
+                "type": "geoshape",
+                "fill": "#ddd",
+                "stroke":"white"
+            },
+            "encoding": {"tooltip":{"field": "note"}}
+        },
+        {
+            
+            "transform":[
+                {
+                    "lookup":"Iso Code",
+                    "from":{
+                        "data": {
+                            "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/World_View_NoGraticules.json",
+                            "format":{
+                                "type": "topojson",
+                                "feature": "ne_110m_admin_0_countries"
+                            }
+                        } ,
+                        "key": "properties.ISO_A3_EH"                       
+                    },
+                    "as": "geo"
+                },
+            
+                {"filter":"datum.Year == Year_selection"},
+                {
+                    "calculate": "datum['Electricity Generation'] + ' TWh' ",
+                    "as": "note"
+                }
+            ],
+            "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
+            "encoding": {
+                "shape": { "field": "geo", "type": "geojson" },
+                "color": {
+                    "field": "Electricity Generation", 
+                    "type": "quantitative",
+                    "scale":{
+                        "domain":[
+                            0,
+                            7500
+                        ],
+                        "scheme":"blues"
+                    },
+                    "legend": {"format": ".2s"}
+                    },
+                    "tooltip":[
+                        {"field": "Country", "title": "Country"},
+                        {"field": "note","title": "Electricity generated this year"}]
+                }
+        }
+    ]
+
+
+    }]
+}
+
+
+
+
+
+
+
+
+
