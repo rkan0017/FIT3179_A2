@@ -5,21 +5,18 @@
     "params": [
         {
             "name": "Year_selection",
-            "value": 2019,
-            "bind": {
-                "input": "range",
-                "min": 1992,
-                "max": 2019,
-                "step": 1,
-                "name": "Year:  "
-            }
+            "value": 2019
         },
         {
             "name": "zoom_level",
-            "value": 250
+            "value": 187
         },
         {
-            "name": "center_to"
+            "name": "center_to",
+            "value": [0,93]
+        },
+        {
+            "name": "country_select"
         }
             
     ],
@@ -30,7 +27,7 @@
 
         "title": "% renewable electricity per country",
     "width": 1200,
-    "height": 800,
+    "height": 600,
     
     
     "projection": {
@@ -92,6 +89,50 @@
                 }
             ],
             "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
+            "encoding": {
+                "shape": { "field": "geo", "type": "geojson" },
+                "color": {
+                    "field": "Electricity Generation", 
+                    "type": "quantitative",
+                    "scale":{
+                        "domain":[
+                            0,
+                            7500
+                        ],
+                        "scheme":"blues"
+                    },
+                    "legend": {"format": ".2s"}
+                    },
+                    "tooltip":[
+                        {"field": "Country", "title": "Country"},
+                        {"field": "note","title": "Electricity generated this year"}]
+                }
+        },{
+            "transform": [
+                {
+                    "lookup":"Iso Code",
+                    "from":{
+                        "data": {
+                            "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/World_View_NoGraticules.json",
+                            "format":{
+                                "type": "topojson",
+                                "feature": "ne_110m_admin_0_countries"
+                            }
+                        } ,
+                        "key": "properties.ISO_A3_EH"                       
+                    },
+                    "as": "geo"
+                },
+                {
+                "filter": "datum.Country == country_select"},
+            
+                {"filter":"datum.Year == Year_selection"},
+                {
+                    "calculate": "datum['Electricity Generation'] + ' TWh' ",
+                    "as": "note"
+                }
+            ],
+            "mark": { "type": "geoshape", "stroke": "#000", "strokeWidth": 2 },
             "encoding": {
                 "shape": { "field": "geo", "type": "geojson" },
                 "color": {

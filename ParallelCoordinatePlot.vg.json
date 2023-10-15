@@ -10,18 +10,11 @@
     [
         {
             "name": "Year_selection",
-            "value": 2019,
-            "bind": {
-                "input": "range",
-                "min": 1992,
-                "max": 2019,
-                "step": 1,
-                "name": "Year:  "
-            }
+            "value": 2019
         },
         {
             "name": "country_select",
-            "value": "Australia"
+            "value": ""
         }
     ],
     "layer": [
