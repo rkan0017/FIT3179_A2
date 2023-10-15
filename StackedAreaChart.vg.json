@@ -38,7 +38,7 @@
             "field": "Year",
             "axis":{"tickSize": 1}
         },
-        "y":{"aggregate":"sum","field":"Electricity Generation","axis": null,"title":null, "stack":"center"},
+        "y":{"aggregate":"sum","field":"Electricity Generation","title":null},
         "color":
         {
             "field": "Country","legend":{"title":"Country"},"scale":{"scheme": "category20c"},
