@@ -9,11 +9,12 @@
         
     </head>
     <body>
+        <div id="pie"></div>
         <div id = "totalGeneration"></div>
-        <div>
+        <!-- <div>
             <input id="yearSelect" type="range" min="1992" max="2019" value="2019" step="1" oninput="change();"> 
             <span id="result">2019</span>
-        </div>
+        </div> -->
         <div>
             <label for="map_spawn0">Zoom to:</label>
 
@@ -30,7 +31,7 @@
         <div id = "parallel"></div>
         <div>
             <label for="country-choice">Enter a country:</label>
-            <input list="country-list" id="country-choice" name="country-choice" onchange="changeBothView()" value="" />
+            <input list="country-list" id="country-choice" name="country-choice" onchange="changeBothView()" value="Australia" />
 
             <datalist id="country-list">
             </datalist>

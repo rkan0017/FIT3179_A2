@@ -87,7 +87,7 @@ function changeZoom(id){
 
 function changeBothView(){
     changeView()
-    highlight()
+    // highlight()
 }
 
 function changeView(){
@@ -97,7 +97,7 @@ function changeView(){
     value = selected.value
     console.log(value)
     view.signal("country_select",value)
-    view.signal("Year_selection",yearSelect)
+    // view.signal("Year_selection",yearSelect)
     
 }
 
@@ -105,11 +105,11 @@ function highlight(){
     view = map0.view
     selected = document.getElementById("country-choice")
     var yearSelect = document.getElementById("yearSelect");
-    view.signal("Year_selection",yearSelect.value)
+    // view.signal("Year_selection",yearSelect.value)
     value = selected.value
     console.log(value)
     view.signal("country_select",value)
-    view.signal("Year_selection",yearSelect)
+    // view.signal("Year_selection",yearSelect)
 }
 
 
@@ -118,6 +118,7 @@ var spec2 = "StackedAreaChart.vg.json";
 var spec3 = "EnergyPerCapita.vg.json";
 var spec4 = "ParallelCoordinatePlot.vg.json"
 var spec5 = "electricityGeneration.vg.json"
+var spec6 = "pieChart.vg.json"
 vegaEmbed('#symbol_map', spec1).then(function(result) {
 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     map = result
@@ -135,6 +136,9 @@ vegaEmbed('#parallel', spec4).then(function(result) {
 vegaEmbed('#totalGeneration',spec5).then(function(result){
     map0 = result
 }).catch(console.error)
+vegaEmbed('#pie', spec6).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
 
 
 let url = "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv";

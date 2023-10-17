@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    
+    "width": 600,
+    "height": 300,
+    
+    
+    "params": 
+    [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "data":{
+                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
+                "format":{
+                    "type": "csv",
+                    "parse": {
+                        "Year": "number",
+                        "% Renewables": "number",
+                        "Coal": "number",
+                        "Oil": "number",
+                        "Gas": "number"
+                    }
+                }
+            },
+            "transform": 
+            [
+                {"filter": "datum.Year == Year_selection"},
+                {"fold": ["Coal","Oil","Gas","% Renewables"]}
+
+            ],
+            "mark": {"type": "arc", "innerRadius": 50},
+            "encoding": {
+                "theta": {"field": "value", "type": "quantitative"},
+                "color": {"field": "key", "type": "nominal"},
+                "tooltip":[
+                    {
+                        "type": "quantitative",
+                        "field": "Coal",
+                        "title": "Coal %"
+                      }
+                    ]
+            }
+        }
+    ]
+}

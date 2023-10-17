@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    
+    "width": 600,
+    "height": 300,
+    
+    
+    "params": 
+    [
+        {
+            "name": "Year_selection",
+            "value": 2019,
+            "bind": {
+                "input": "range",
+                "min": 1992,
+                "max": 2019,
+                "step": 1,
+                "name": "Year:  "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "data":{
+                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V6.csv",
+                "format":{
+                    "type": "csv",
+                    "parse": {
+                        "Population": "number",
+                        "Year": "number",
+                        "TotalEnergyperCapita(MWh)": "number"
+                    }
+                }
+            }
+        }
+    ]
+}
