@@ -42,7 +42,7 @@
               "sort": 
               [
                   {
-                      "field": "Electricity Generated (TWh)", "order": "descending" 
+                      "field": "Category", "order": "descending" 
                   }
               ]
           }
@@ -50,7 +50,7 @@
       ],
     "encoding": {
       "theta": {"field": "Electricity Generated (TWh)", "type": "quantitative", "stack": true},
-      "color": {"field": "Category", "type": "nominal", "legend": null}
+      "color": {"field": "Category", "type": "nominal"}
     },
     "layer": [{
       "mark": {"type": "arc","innerRadius":60, "outerRadius": 100,"padAngle": 0.05, "cornerRadius":10},
@@ -72,7 +72,7 @@
                       ]
               }
     }, {
-      "mark": {"type": "text", "radius": 110},
+      "mark": {"type": "text", "radius": 130},
       "encoding": {
         "text": {"field": "Category", "type": "nominal"},
         "order":{"field":"Electricity Generated (TWh)","type": "quantitative","sort": "descending"}
