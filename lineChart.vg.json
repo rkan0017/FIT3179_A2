@@ -1,38 +1,37 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
-    
-    "width": 600,
-    "height": 300,
-    
-    
-    "params": 
-    [
-        {
-            "name": "Year_selection",
-            "value": 2019,
-            "bind": {
-                "input": "range",
-                "min": 1992,
-                "max": 2019,
-                "step": 1,
-                "name": "Year:  "
+    "height": 500,
+    "width": 1000,
+
+    "data":{
+        "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/worldData_pct2.csv",
+        "format":{
+            "type": "csv",
+            "parse": {
+                "Year": "number",
+                "% Fossil": "number",
+                "% Renewables": "number"
             }
         }
+    },
+    "transform": [
+        {"filter": "datum.Year> 1991"}
     ],
-    "layer": [
-        {
-            "data":{
-                "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V6.csv",
-                "format":{
-                    "type": "csv",
-                    "parse": {
-                        "Population": "number",
-                        "Year": "number",
-                        "TotalEnergyperCapita(MWh)": "number"
-                    }
-                }
-            }
+
+    "repeat":{
+        "layer": ["% Fossil","% Renewables"]
+    },
+    "spec":{
+        "mark":{"type":"line","strokeWidth":6,"point":true},
+        "encoding": {
+            "x":{"field":"Year", "type": "ordinal"},
+            "y":{"field":{"repeat": "layer"},
+            "type": "quantitative",
+            "scale":{"domain":[0,100]}},
+            "color":{"datum":{"repeat": "layer"},"type": "nominal","scale": {"range":["#994d00","#08850a"]}}
+
         }
-    ]
+    }
+    
 }

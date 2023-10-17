@@ -119,6 +119,7 @@ var spec3 = "EnergyPerCapita.vg.json";
 var spec4 = "ParallelCoordinatePlot.vg.json"
 var spec5 = "electricityGeneration.vg.json"
 var spec6 = "pieChart.vg.json"
+var spec7 = "lineChart.vg.json"
 vegaEmbed('#symbol_map', spec1).then(function(result) {
 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     map = result
@@ -137,6 +138,9 @@ vegaEmbed('#totalGeneration',spec5).then(function(result){
     map0 = result
 }).catch(console.error)
 vegaEmbed('#pie', spec6).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+vegaEmbed('#lines', spec7).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
