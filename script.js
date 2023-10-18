@@ -41,7 +41,7 @@ function changeZoom(id){
         default:
             view.signal("zoom_level",250)
             view.signal("center_to",[0,0])
-    }                        
+    }            
 
     } else{
         view = map0.view
@@ -50,8 +50,8 @@ function changeZoom(id){
         console.log(selected.value)
         switch (selected.value){
             case "World":
-                view.signal("zoom_level",187)
-                view.signal("center_to",[0,93])
+                view.signal("zoom_level",250)
+                view.signal("center_to",[0,0])
                 break;
             case "Africa":
                 view.signal("zoom_level",550)

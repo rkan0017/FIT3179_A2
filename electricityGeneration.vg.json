@@ -28,10 +28,9 @@
     ],
     
 
-    "title": "Total electricity produced per country annually",
-    "width": 1200,
-    "height": 900,
-    
+    "width": 1550,
+    "height": 800,
+    "padding": 0,
     
     "projection": {
         "type":"equirectangular",
@@ -111,7 +110,13 @@
                         {"field": "note","title": "Electricity generated this year"}]
                 }
         }
-    ]
+    ],
+    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
+    "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }}
 
 
 

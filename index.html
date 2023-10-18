@@ -19,17 +19,31 @@
     </head>
     <body>
         <div class="page">
+
             <!-- Title + Introduction -->
             <div class="section">
-                <H1>Title</H1>
-                <h3>Introduction</h3>
+                <h1 style="text-align: center;">Global Electricity Production</h1>
+                <h3>
+                    Electricity has transformed the world we live in. Ever since Thomas Edison created the world's first public power station in 1882 <sup><a href="https://pulseenergy.co.nz/our-blog/a-brief-history-of-electricity/">[1]</a></sup>, 
+                    production of electricity has not only increased, but also diversified in source. Whilst the first power station was powered by burning coal, electricity can now be generated through a 
+                    large variety of sources, both renewable and non-renewable.
+                    <br>
+                    <br>
+                    
+                </h3>
+                <h4>
+                    Unless otherwise specified, all electricity values are displayed in TeraWatt-Hours (TWh), which is 10^12 Watt-Hours. A Watt-Hour is a unit of measurement for electricity produced.
+                    One Watt-Hour of electricity is the equivalent to the total electricity produced by a one watt generator in one hour. 
+                </h4>
             </div>
+
 
             <!-- Total Energy map -->
             <div class="section">
                 <div class="pure-g">
+                    <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
                     <div class="pure-u-1-1" id = "totalGeneration"></div>
-                    <div class="pure-u-1-1">
+                    <div class="pure-u-1-5" style="padding-top: 20px;"">
                         <label for="map_spawn0">Zoom to:</label>
 
                         <select name="map_spawn0" id="map_spawn0" onchange="changeZoom('map_spawn0')">
@@ -42,20 +56,47 @@
                             <option value="SA">South America</option>
                         </select>
                     </div> 
+                    <div class="pure-u-4-5">
+                        <p style="text-align: center; color: grey;">
+
+                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world.
+                            <br>
+                            In the event that selecting a different dropdown option does not shift the map view, adjusting the year should refresh the map to the right view.
+                        </p>
+                    </div>
                 </div>
+
+
 
                 <!--Description + Stacked area chart -->
                 <div class="pure-g">
                     <div class="pure-u-1-2">
-                        <p>Stacked area chart description</p>
+                        <p>
+                            The chart on the right depicts how the each country has contributed to the world's cumulative electricity production per year. 
+                            On average, the total amount of electricity produced has grown by approximately 2.9% annually from 1992 to 2019. 
+                            <br>
+                            <br>
+                            The lack of growth worldwide during the 2007-2009 period can be associated to the Global Financial Crisis, which began in 2007. 
+                            During this period, due to a lack of financing <sup><a href="https://iea.blob.core.windows.net/assets/461ac14d-f098-48ce-9ea6-6d1d83160b97/TheImpactoftheFinancialandEconomicCrisisonGlobalEnergyInvestment.pdf">[2]</a></sup>, 
+                            both supply and demand for electricity remained relatively stagnant, if not decreased. 
+                            <br>
+                            <br>
+                            In 2019, China produced the most electricity, with over 7,000 TWh of electricity being produced, followed by the United States of America, producing around 4100 TWh of electricity.
+                        </p>
                     </div>
-                    <div class="pure-u-1-2" id="areaChart"></div>
+                    <div class="pure-u-1-2">
+                        <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
+                        <div id="areaChart"></div>
+                    </div>
                 </div>
-                    
+                
+
+
 
                 <!-- Parallel Coordinate plot  + Description -->
                 <div class="pure-g">
                     <div class="pure-u-1-2" >
+                        <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
                         <div id = "parallel" ></div>
                         <div>
                             <label for="country-choice">Enter a country:</label>
@@ -74,6 +115,8 @@
             </div>
             
 
+
+
             <!-- Description + Pie chart -->
             <div class="section">
                 <div class="pure-g">
@@ -82,12 +125,22 @@
                             Pie description
                         </p>
                     </div>
-                    <div class="pure-u-1-2" id="pie"></div>
+                    <div class="pure-u-1-2">
+                        <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
+                        <div id="pie"></div>
+                    </div>
                 </div>
+
+
+
 
                 <!-- Ordered Bar chart + Description -->
                 <div class="pure-g">
-                    <div class="pure-u-1-2" id = "orderedBar"></div>
+                    <div class="pure-u-1-2">
+                        <h4 class="pure-u-1-1" style="text-align: center;">Electricity produced from Fossil Fuels (TWh)</h4>
+                        <div id = "orderedBar"></div>
+                    </div>
+                    
                     <div class="pure-u-1-2">
                         <p>
                             Order bar description
@@ -96,12 +149,19 @@
                 </div>
             </div>
 
+
+
+
             <!-- Renewables map -->
             <div class="section">
                 <div class="pure-g">
-                    <div class="pure-u-1-1" id="symbol_map"></div>
-
                     <div class="pure-u-1-1">
+                        <h4 class="pure-u-1-1" style="text-align: center;">Electricity produced from Fossil Fuels (TWh)</h4>
+                        <div id="symbol_map"></div>
+                    </div>
+                    
+
+                    <div class="pure-u-1-5" style="padding-top: 20px;"">
                         <label for="map_spawn">Zoom to:</label>
 
                         <select name="map_spawn" id="map_spawn" onchange="changeZoom('map_spawn')">
@@ -114,7 +174,18 @@
                             <option value="SA">South America</option>
                         </select>
                     </div> 
+                    <div class="pure-u-4-5">
+                        <p style="text-align: center; color: grey;">
+
+                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world.
+                            <br>
+                            In the event that selecting a different dropdown option does not shift the map view, adjusting the year should refresh the map to the right view.
+                        </p>
+                    </div>
                 </div>
+
+
+
 
                 <!-- Description + Line chart -->
                 <div class="pure-g">
@@ -123,14 +194,25 @@
                             Line Description
                         </p>
                     </div>
-                    <div class="pure-u-1-2" id = "lines"></div>
+                    <div class="pure-u-1-2">
+                        <h4 class="pure-u-1-1" style="text-align: center;"> Percentage of Electricity produced from Fossil Fuels vs Renewables</h3>
+                        <div id = "lines"></div>
+                    </div>
+                    
                 </div>
             </div>
+
+
+
 
             <!-- Source -->
             <div>
                 <p>
-                    Source
+                    Dataset Source: Kaggle
+                    <br>
+                    [1] <a href="https://pulseenergy.co.nz/our-blog/a-brief-history-of-electricity/">Source</a>
+                    <br>
+                    [2] <a href="https://iea.blob.core.windows.net/assets/461ac14d-f098-48ce-9ea6-6d1d83160b97/TheImpactoftheFinancialandEconomicCrisisonGlobalEnergyInvestment.pdf">Source</a>
                 </p>
             </div>
         </div>

@@ -12,9 +12,9 @@
         }
     },
         
-    "width": 600,
+    "width": 700,
     "height": 300,
-    "mark": "area",
+    
     
     "params": [{
         "name": "country",
@@ -22,38 +22,50 @@
         "bind": "legend"
         }
     ],
-    "transform": [
-        {"filter": "datum.Year > 1990"},
-        {"filter": "datum.Year < 2020"},
-        {
-            "window": [{
-                "op": "rank",
-                "as": "rank"
-            }],
-            "sort": [{ "field": "Electricity Generation", "order": "descending" }]
-        }
-    ],
-    "encoding": {
-        "x":{ 
-            "field": "Year",
-            "axis":{"tickSize": 1}
-        },
-        "y":{"aggregate":"sum","field":"Electricity Generation","title":null},
-        "color":
-        {
-            "field": "Country","legend":{"title":"Country"},"scale":{"scheme": "category20c"},
-            "sort": { "field": "Electricity Generation", "order": "descending" }
-        },
-        "tooltip":[{"field": "Country","title": "Country"},
-        {"field": "Electricity Generation","title":"Electricity generated (TWh)"},
-        {"field": "Year","title": "Year"}
 
-    ],
-    "opacity": {
-        "condition": {"param": "country", "value": 1},
-        "value": 0.2
+    
+            
+        "transform": [
+            {"filter": "datum.Year > 1990"},
+            {"filter": "datum.Year < 2021"},
+            {
+                "window": [{
+                    "op": "rank",
+                    "as": "rank"
+                }],
+                "sort": [{ "field": "Electricity Generation", "order": "descending" }]
+            }
+        ],
+    
+        
+        "mark": "area",
+        "encoding": {
+            "x":{ 
+                "field": "Year",
+                "axis":{"tickSize": 1}
+            },
+            "y":{"aggregate":"sum","field":"Electricity Generation","title":null},
+            "color":
+            {
+                "field": "Country","legend":{"title":"Country","symbolLimit":11},"scale":{"scheme": "category20"},
+                "sort": { "field": "Electricity Generation", "order": "descending" }
+            },
+            "tooltip":[{"field": "Country","title": "Country"},
+            {"field": "Electricity Generation","title":"Electricity generated (TWh)"},
+            {"field": "Year","title": "Year"}
+    
+        ],
+        "opacity": {
+            "condition": {"param": "country", "value": 1},
+            "value": 0.2
+            }
+        },
+    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
+    "style": {
+        "cell": {
+          "stroke": "transparent"
         }
-    }
+      }}
         
     
 }

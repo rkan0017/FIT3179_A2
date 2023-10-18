@@ -19,19 +19,35 @@
         {"filter": "datum.Year> 1991"}
     ],
 
+
     "repeat":{
         "layer": ["% Fossil","% Renewables"]
     },
     "spec":{
-        "mark":{"type":"line","strokeWidth":6,"point":true},
+        "mark":{"type":"line","strokeWidth":3,"point":true},
         "encoding": {
             "x":{"field":"Year", "type": "ordinal"},
             "y":{"field":{"repeat": "layer"},
             "type": "quantitative",
             "scale":{"domain":[0,100]}},
-            "color":{"datum":{"repeat": "layer"},"type": "nominal","scale": {"range":["#994d00","#08850a"]}}
+            "color":{"datum":{"repeat": "layer"},"type": "nominal","scale": {"range":["#994d00","#08850a"]}},
+            "tooltip":[
+                {"field":"Year",
+            "type": "quantitative",
+        "title":"Year"},
+        {
+            "field":{"repeat": "layer"},
+            "type": "quantitative"
+        }
+            ]
 
         }
-    }
+    },
+    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
+    "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }}
     
 }

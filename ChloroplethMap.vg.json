@@ -33,10 +33,9 @@
         }
             
     ],
-
-    "title": "Total electricity produced per country annually",
-    "width": 1200,
-    "height": 900,
+    
+    "width": 1550,
+    "height": 800,
     
     "projection": {
         "type":"equirectangular",
@@ -92,9 +91,9 @@
                     "field": "% Renewables", 
                     "type": "quantitative",
                     "scale":{
+                        "type": "threshold",
                         "domain":[
-                            0,
-                            100
+                            20,40,60,80
                         ],
                         "scheme":"greens"
                     },
@@ -105,7 +104,13 @@
                         {"field": "note","title": "% Renewable"}]
                 }
         }
-    ]
+    ],
+    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
+    "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }}
 }
 
 

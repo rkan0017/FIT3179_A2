@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-    "width": 800,
-    "height": 500,
+    "width": 700,
+    "height": 400,
 
     "description": "A simple pie chart with labels.","params": 
     [
@@ -53,10 +53,10 @@
     },
     "layer": [
         {
-        "mark": {"type": "arc","innerRadius":60, "outerRadius": 100,"padAngle": 0.05, "cornerRadius":10},
+        "mark": {"type": "arc","innerRadius":60, "outerRadius": 150,"padAngle": 0.05, "cornerRadius":10},
         "encoding": {
                 "theta": {"field": "Electricity Generated (TWh)", "type": "quantitative","stack":true},
-                "color": {"field": "Category", "type": "nominal","legend":{}},
+                "color": {"field": "Category", "type": "nominal"},
                 "order":{"field":"Electricity Generated (TWh)","type": "quantitative","sort": "descending"},
                 "tooltip":[
                     {
@@ -79,5 +79,11 @@
             "order":{"field":"Electricity Generated (TWh)","type": "quantitative","sort": "descending"}
         }
         }
-    ]
+    ],
+    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
+    "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }}
 }
