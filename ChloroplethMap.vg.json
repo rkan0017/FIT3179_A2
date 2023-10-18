@@ -34,9 +34,9 @@
             
     ],
 
-    "title": "% renewable electricity per country",
-    "width": 1600,
-    "height": 800,
+    "title": "Total electricity produced per country annually",
+    "width": 1200,
+    "height": 900,
     
     "projection": {
         "type":"equirectangular",

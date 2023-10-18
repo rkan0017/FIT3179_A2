@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
-    "height": 500,
-    "width": 1000,
+    "height": 300,
+    "width": 700,
 
     "data":{
         "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/worldData_pct2.csv",

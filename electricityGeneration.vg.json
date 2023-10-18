@@ -1,4 +1,3 @@
-
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
@@ -30,8 +29,8 @@
     
 
     "title": "Total electricity produced per country annually",
-    "width": 1600,
-    "height": 800,
+    "width": 1200,
+    "height": 900,
     
     
     "projection": {
