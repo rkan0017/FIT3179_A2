@@ -4,7 +4,7 @@
     "description": "A line chart visualising the percentage of the worlds electricity produced by fossil fuels and renewable sources",
 
     "height": 300,
-    "width": 700,
+    "width": 650,
     "data": {
         "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/worldData_pct2.csv",
         "format": {
