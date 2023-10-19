@@ -22,7 +22,7 @@ padding-left: 0px;
 padding-right: 0px;
 padding-top: 10px;
 border-bottom: 2px solid #00000085;
-background-color: white;
+background-color: turquoise;
 }
 
 .pure-g 
@@ -35,5 +35,11 @@ background-color: white;
 
 body{
 	background-color: #08080808;
+}
+
+.caption{
+	padding: 30px;
+	font-size: large;
+	padding-top: 10%;
 }
 

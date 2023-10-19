@@ -73,7 +73,7 @@
             }
         }, 
         {
-        "mark": {"type": "text", "radius": 130},
+        "mark": {"type": "text", "radius": 180},
         "encoding": {
             "text": {"field": "Category", "type": "nominal"},
             "order":{"field":"Electricity Generated (TWh)","type": "quantitative","sort": "descending"}

@@ -23,22 +23,24 @@
             <!-- Title + Introduction -->
             <div class="section">
                 <h1 style="text-align: center;">Global Electricity Production</h1>
-                <h3>
+                <h3 style="padding-left: 20px; padding-right: 20px;">
                     Electricity has transformed the world we live in. Ever since Thomas Edison created the world's first public power station in 1882 <sup><a href="https://pulseenergy.co.nz/our-blog/a-brief-history-of-electricity/">[1]</a></sup>, 
                     production of electricity has not only increased, but also diversified in source. Whilst the first power station was powered by burning coal, electricity can now be generated through a 
-                    large variety of sources, both renewable and non-renewable.
+                    large variety of sources, both renewable and non-renewable. 
                     <br>
                     <br>
+                    Fossil fuels, or non-renewable energy sources, are considered to be Coal, Natural Gas and Oil. These sources come from decomposing plants and animals that are millions of years old. 
+                    Renewable energy sources, on the other hand, are Biofuels, Hydroelectric Energy, Solar and Wind. 
                     
                 </h3>
-                <h4>
+                <h4 style="padding-left: 20px; padding-right: 20px; font-weight: 500;">
                     Unless otherwise specified, all electricity values are displayed in TeraWatt-Hours (TWh), which is 10^12 Watt-Hours. A Watt-Hour is a unit of measurement for electricity produced.
-                    One Watt-Hour of electricity is the equivalent to the total electricity produced by a one watt generator in one hour. 
+                    One Watt-Hour of electricity is the equivalent to the total electricity produced by a one watt electricity generator in one hour. 
                 </h4>
             </div>
 
 
-            <!-- Total Energy map -->
+            <!-- Total Energy map --> 
             <div class="section">
                 <div class="pure-g">
                     <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
@@ -59,7 +61,7 @@
                     <div class="pure-u-4-5">
                         <p style="text-align: center; color: grey;">
 
-                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world.
+                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world. For more details hover over countries.
                             <br>
                             In the event that selecting a different dropdown option does not shift the map view, adjusting the year should refresh the map to the right view.
                         </p>
@@ -71,22 +73,22 @@
                 <!--Description + Stacked area chart -->
                 <div class="pure-g">
                     <div class="pure-u-1-2">
-                        <p>
+                        <p class="caption">
                             The chart on the right depicts how the each country has contributed to the world's cumulative electricity production per year. 
                             On average, the total amount of electricity produced has grown by approximately 2.9% annually from 1992 to 2019. 
                             <br>
                             <br>
-                            The lack of growth worldwide during the 2007-2009 period can be associated to the Global Financial Crisis, which began in 2007. 
-                            During this period, due to a lack of financing <sup><a href="https://iea.blob.core.windows.net/assets/461ac14d-f098-48ce-9ea6-6d1d83160b97/TheImpactoftheFinancialandEconomicCrisisonGlobalEnergyInvestment.pdf">[2]</a></sup>, 
-                            both supply and demand for electricity remained relatively stagnant, if not decreased. 
-                            <br>
-                            <br>
-                            In 2019, China produced the most electricity, with over 7,000 TWh of electricity being produced, followed by the United States of America, producing around 4100 TWh of electricity.
+                            In 2019, <span style="color: #aec7e8; font-weight: bold;">China</span> produced the most electricity, with over 7,000 TWh of electricity being produced, followed by the <span style="color: #1f77b4; font-weight: bold;">United States of America</span>, producing around 4100 TWh of electricity.
                         </p>
                     </div>
                     <div class="pure-u-1-2">
                         <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
                         <div id="areaChart"></div>
+                        <p style="text-align: center; color: grey;">
+                        Click on a country on the legend above to highlight it in the chart. 
+                        <br>
+                        For more details hover over countries.
+                    </p>
                     </div>
                 </div>
                 
@@ -96,7 +98,7 @@
                 <!-- Parallel Coordinate plot  + Description -->
                 <div class="pure-g">
                     <div class="pure-u-1-2" >
-                        <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
+                        <h4 class="pure-u-1-1" style="text-align: center;">Proportion of Annual Electricity Production per Country by Source</h4>
                         <div id = "parallel" ></div>
                         <div>
                             <label for="country-choice">Enter a country:</label>
@@ -105,11 +107,24 @@
                             <datalist id="country-list">
                             </datalist>
                         </div>
+                        <p style="text-align: center; color: grey;">
+
+                            Adjust the slider to view data from different years, and select a country to view from the "Enter a country" dropdown. For more details hover over the chart points.
+                            <br>
+                            In the event that selecting a different dropdown option does not change the viewed country, adjusting the year should refresh the plot to the right view.
+                        </p>
                     </div>
                     <div class="pure-u-1-2">
-                        <p>
-                            Parallel Coordinate description
+                        <p class="caption">
+                            The plot on the left breaks down each country's annual electricity production by source. A large number of countries worldwide rely on coal as their primary source of electricity, on average producing 35% of a country's electricity worldwide in 2019. 
+                            <br>
+                            <br>
+                            Countries like Brunei and Bangladesh rely entirely on coal, which produces over 90% of the country's electricity.
+                            <br>
+                            <br>
+                            However, countries like Albania do not use any fossil fuels to produce electricity, which instead generates almost all of its electricity from hydro energy.
                         </p>
+                        
                     </div>
                 </div>
             </div>
@@ -119,15 +134,29 @@
 
             <!-- Description + Pie chart -->
             <div class="section">
+                <div class="pure-u-1-1">
+                    <h2>Fossil Fuels as sources of electricity</h2>
+                </div>
                 <div class="pure-g">
                     <div class="pure-u-1-2">
-                        <p>
-                            Pie description
+                        <p class="caption">
+                            The chart on the right breaks down the types of fossil fuels used worldwide relative to renewable sources of electricity. Historically, <span style="color: #4c78a8; font-weight: bold;">Coal</span> has been extremely dominant due to its abundance, producing just under half of the world's total electricity in 1992. 
+                            <br>
+                            <br>
+                            However in recent years, <span style="color: #f58518; font-weight: bold;">Natural Gas</span> has started producing a larger proportion of the world's electricity.
+                            In 1992, 4650.556 TWh of electricity was produced from <span style="color: #4c78a8; font-weight: bold;">Coal</span>, and just 1822.876 TWh was produced from <span style="color: #f58518; font-weight: bold;">Natural Gas</span>. 
+                            However, in 2019, while <span style="color: #4c78a8; font-weight: bold;">Coal</span> based electricity grew approximately 95% and responsible for generating just over 9,000 TWh, <span style="color: #f58518; font-weight: bold;">Natural Gas</span> based electricity grew 226%, producing just under 6,000 TWh in 2019.
+                            <br>
+                            <br>
+                            <span style="color: #e45756; font-weight: bold;">Oil</span> has been on a decline in popularity since 1992 as a source of electricity, producing 1327 TWh in 1992 to 1089 TWh in 2019, decreasing by 18%. 
                         </p>
                     </div>
                     <div class="pure-u-1-2">
-                        <h4 class="pure-u-1-1" style="text-align: center;">Total Electricity Produced per Country Annually (TWh)</h4>
+                        <h4 class="pure-u-1-1" style="text-align: center;">Proportion of World Electricity Production by Fossil Fuel Type</h4>
                         <div id="pie"></div>
+                        <p style="text-align: center; color: grey;">
+                            Adjust the slider to view data from different years, and for more details hover over the chart segments.
+                        </p>
                     </div>
                 </div>
 
@@ -142,8 +171,16 @@
                     </div>
                     
                     <div class="pure-u-1-2">
-                        <p>
-                            Order bar description
+                        <p class="caption">
+                            The chart on the left displays which countries produce the most electricity from fossil fuels over the years. 
+                            <br>
+                            <br>
+                            In 1992, the <span style="color: #72b7b2; font-weight: bold;">United States of America</span> produced the most electricity from fossil fuels, generating just under 2,300 TWh of electricity. 
+                            The second biggest fossil fuel electricity producer was <span style="color: #9d755d; font-weight: bold;">Russia</span>, producing a relatively small 714 TWh, followed by <span style="color: #f58518; font-weight: bold;">China</span> with 623 TWh.
+                            <br>
+                            <br>
+                            In 2009, China overtook the <span style="color: #72b7b2; font-weight: bold;">United States of America</span> for the most electricity produced from fossil fuels. In 2019, <span style="color: #f58518; font-weight: bold;">China</span> produced over 4,900 TWh of electricity, growing 692% from 1992. 
+                            <span style="color: #72b7b2; font-weight: bold;">United States of America</span>, in comparison, was producing just under 2,600 TWh in 2019, growing 12%. 
                         </p>
                     </div>
                 </div>
@@ -154,9 +191,41 @@
 
             <!-- Renewables map -->
             <div class="section">
+                <div class="pure-u-1-1">
+                    <h2>The Rise of Renewables</h2>
+                </div>
                 <div class="pure-g">
+
+                    <!-- Description + Line chart -->
+                    <div class="pure-g">
+                        <div class="pure-u-1-2">
+                            <p class="caption">
+                                In recent years, due to a worldwide shift in focus due to global warming, renewable sources of electricity have been on the rise. 
+                                <br>
+                                <br>
+                                The chart on the right presents the percentage of world electricity produced by both <span style="color: #994d00; font-weight: bold;">Fossil Fuels</span> and <span style="color: #08850a; font-weight: bold;">Renewable Energy</span> sources. 
+                                The proportion of electricity produced from <span style="color: #08850a; font-weight: bold;">Renewable Energy</span> sources remained in the low 20-25% range until 2011, 
+                                after which there has been an increase in the percentage of electricity produced by <span style="color: #08850a; font-weight: bold;">renewables</span> annually, rising to 32.227% in 2019.
+                            </p>
+                            <br>
+                            <br>
+                            <p class="caption">
+                                The map below presents the percentage of a country's electricity produced by Renewable Energy sources.
+                            </p>
+                        </div>
+                        <div class="pure-u-1-2">
+                            <h4 class="pure-u-1-1" style="text-align: center;"> Percentage of Electricity produced from Fossil Fuels vs Renewables</h3>
+                            <div id = "lines"></div>
+                            <p style="text-align: center; color: grey;">
+                                Hover over points for more details.
+                            </p>
+                        </div>
+                        
+                        
+                    </div>
+
                     <div class="pure-u-1-1">
-                        <h4 class="pure-u-1-1" style="text-align: center;">Electricity produced from Fossil Fuels (TWh)</h4>
+                        <h4 class="pure-u-1-1" style="text-align: center;">Percentage of Electricity Produced from Renewable Sources</h4>
                         <div id="symbol_map"></div>
                     </div>
                     
@@ -177,28 +246,11 @@
                     <div class="pure-u-4-5">
                         <p style="text-align: center; color: grey;">
 
-                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world.
+                            Adjust the slider to view data from different years, and select a map view from the "Zoom to" dropdown to focus the map on different regions of the world. For more details hover over countries.
                             <br>
                             In the event that selecting a different dropdown option does not shift the map view, adjusting the year should refresh the map to the right view.
                         </p>
                     </div>
-                </div>
-
-
-
-
-                <!-- Description + Line chart -->
-                <div class="pure-g">
-                    <div class="pure-u-1-2">
-                        <p>
-                            Line Description
-                        </p>
-                    </div>
-                    <div class="pure-u-1-2">
-                        <h4 class="pure-u-1-1" style="text-align: center;"> Percentage of Electricity produced from Fossil Fuels vs Renewables</h3>
-                        <div id = "lines"></div>
-                    </div>
-                    
                 </div>
             </div>
 
