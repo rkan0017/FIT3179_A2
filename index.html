@@ -134,7 +134,7 @@
             <!-- Description + Pie chart -->
             <div class="section">
                 <div class="pure-u-1-1">
-                    <h2>Fossil Fuels as sources of electricity</h2>
+                    <h2 style="padding-left: 10px;">Fossil Fuels as sources of electricity</h2>
                 </div>
                 <div class="pure-g">
                     <div class="pure-u-1-2">
@@ -154,7 +154,7 @@
                         <h4 class="pure-u-1-1" style="text-align: center;">Proportion of World Electricity Production by Fossil Fuel Type</h4>
                         <div id="pie"></div>
                         <p style="text-align: center; color: grey;">
-                            Adjust the slider to view data from different years, and for more details hover over the chart segments.
+                            Adjust the slider to view data from different years, and for more details hover over the chart.
                         </p>
                     </div>
                 </div>
@@ -166,7 +166,10 @@
                 <div class="pure-g">
                     <div class="pure-u-1-2">
                         <h4 class="pure-u-1-1" style="text-align: center;">Electricity produced from Fossil Fuels (TWh)</h4>
-                        <div id = "orderedBar"></div>
+                        <div id = "orderedBar" style="padding-left: 10px;"></div>
+                        <p style="text-align: center; color: grey;">
+                            Adjust the slider to view data from different years, and for more details hover over the chart.
+                        </p>
                     </div>
                     
                     <div class="pure-u-1-2">
@@ -191,7 +194,7 @@
             <!-- Renewables map -->
             <div class="section">
                 <div class="pure-u-1-1">
-                    <h2>The Rise of Renewables</h2>
+                    <h2  style="padding-left: 10px;">The Rise of Renewables</h2>
                 </div>
                 <div class="pure-g">
 
@@ -206,8 +209,7 @@
                                 The proportion of electricity produced from <span style="color: #08850a; font-weight: bold;">Renewable Energy</span> sources remained in the low 20-25% range until 2011, 
                                 after which there has been an increase in the percentage of electricity produced by <span style="color: #08850a; font-weight: bold;">renewables</span> annually, rising to 32.227% in 2019.
                             </p>
-                            <br>
-                            <br>
+                            
                             <p class="caption">
                                 The map below presents the percentage of a country's electricity produced by Renewable Energy sources.
                             </p>
@@ -225,12 +227,12 @@
 
                     <div class="pure-u-1-1">
                         <h4 class="pure-u-1-1" style="text-align: center;">Percentage of Electricity Produced from Renewable Sources</h4>
-                        <div id="symbol_map"></div>
+                        <div id="symbol_map" style="padding-left: 10px;"></div>
                     </div>
                     
 
                     <div class="pure-u-1-5" style="padding-top: 20px;"">
-                        <label for="map_spawn">Zoom to:</label>
+                        <label for="map_spawn" style="padding-left: 10px;">Zoom to:</label>
 
                         <select class="dropdown" name="map_spawn" id="map_spawn" onchange="changeZoom('map_spawn')">
                             <option value="World">World</option>
@@ -258,12 +260,14 @@
 
             <!-- Source -->
             <div>
-                <p>
+                <p style="text-align: right; padding-right: 2%;">
+                    Author: Rohan Kannan
+                </p>
+                <p style="padding-left: 2%;">
                     Dataset Source: <a href="https://www.kaggle.com/datasets/pralabhpoudel/world-energy-consumption/data">Kaggle</a>
                     <br>
                     [1] <a href="https://pulseenergy.co.nz/our-blog/a-brief-history-of-electricity/">Source</a>
-                    <br>
-                    [2] <a href="https://iea.blob.core.windows.net/assets/461ac14d-f098-48ce-9ea6-6d1d83160b97/TheImpactoftheFinancialandEconomicCrisisonGlobalEnergyInvestment.pdf">Source</a>
+                    
                 </p>
             </div>
         </div>

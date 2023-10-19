@@ -1,12 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    
     "height": 300,
     "width": 700,
-
-    "data":{
+    "data": {
         "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/worldData_pct2.csv",
-        "format":{
+        "format": {
             "type": "csv",
             "parse": {
                 "Year": "number",
@@ -15,39 +13,30 @@
             }
         }
     },
-    "transform": [
-        {"filter": "datum.Year> 1991"}
-    ],
-
-
-    "repeat":{
-        "layer": ["% Fossil","% Renewables"]
-    },
-    "spec":{
-        "mark":{"type":"line","strokeWidth":3,"point":true},
+    "transform": [{"filter": "datum.Year> 1991"}],
+    "repeat": {"layer": ["% Fossil", "% Renewables"]},
+    "spec": {
+        "mark": {"type": "line", "strokeWidth": 3, "point": true},
         "encoding": {
-            "x":{"field":"Year", "type": "ordinal"},
-            "y":{"field":{"repeat": "layer"},
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {
+            "field": {"repeat": "layer"},
             "type": "quantitative",
-            "scale":{"domain":[0,100]}},
-            "color":{"datum":{"repeat": "layer"},"type": "nominal","scale": {"range":["#994d00","#08850a"]}},
-            "tooltip":[
-                {"field":"Year",
-            "type": "quantitative",
-        "title":"Year"},
-        {
-            "field":{"repeat": "layer"},
-            "type": "quantitative"
-        }
-            ]
-
-        }
+            "scale": {"domain": [0, 100]}
+        },
+        "color": {
+            "datum": {"repeat": "layer"},
+            "type": "nominal",
+            "scale": {"range": ["#994d00", "#08850a"]}
+        },
+        "tooltip": [
+            {"field": "Year", "type": "quantitative", "title": "Year"},
+            {"field": {"repeat": "layer"}, "type": "quantitative"}
+        ]
+      }
     },
-    "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
-    "style": {
-        "cell": {
-          "stroke": "transparent"
-        }
-      }}
-    
-}
+    "config": {
+        "legend": {"orient": "bottom", "layout": {"bottom": {"anchor": "middle"}}},
+        "style": {"cell": {"stroke": "transparent"}}
+    }
+  }
