@@ -1,5 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "description": "A line chart visualising the percentage of the worlds electricity produced by fossil fuels and renewable sources",
+
     "height": 300,
     "width": 700,
     "data": {

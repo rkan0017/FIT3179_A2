@@ -1,6 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
+    "description": "A Stacked Area chart visualising electricity produced annually by different countries around the world",
+
     "data":{
         "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
         "format":{

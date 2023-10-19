@@ -1,6 +1,8 @@
 
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "description": "A chloropleth map visualising the proportion of a country's electricity that is produced by renewable energy. Allows for zooming and filtering through years.",
     
     "data":{
         "url": "https://raw.githubusercontent.com/rkan0017/FIT3179_A2/main/WorldEnergyConsumption-Cleaned-V7.csv",
@@ -33,7 +35,7 @@
         }
             
     ],
-    
+
     "width": 1550,
     "height": 800,
     

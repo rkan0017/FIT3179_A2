@@ -1,10 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
+    "description": "A pie chart visualising the proportion of the world's electricity produced by fossil fuels",
+
     "width": 700,
     "height": 300,
 
-    "description": "A simple pie chart with labels.","params": 
+    
+    "params": 
     [
         {
             "name": "Year_selection",
@@ -83,7 +86,7 @@
     "config": {"legend": {"orient": "bottom","layout": {"bottom": {"anchor": "middle"}}},
     "style": {
         "cell": {
-          "stroke": "transparent"
+            "stroke": "transparent"
         }
-      }}
+        }}
 }

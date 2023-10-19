@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    
+
+    "description": "A parallel coordinate plot visualising the percentage a country sources their electricity from",    
     
     "width": 750,
     "height": 300,
